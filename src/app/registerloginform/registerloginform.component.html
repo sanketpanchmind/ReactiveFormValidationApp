@@ -1,0 +1,102 @@
+<section *ngIf="!displayloginflag">
+
+    <div class="container">
+        <form [formGroup]="registerform" class="register-form" (ngSubmit)="validateForm()">
+            <h2>Register</h2>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">User Name</label>
+                        <input type="input" class="form-control" id="" placeholder="" formControlName="username">
+                        <div class="small" *ngIf="f['username'].invalid && f['username'].touched">
+                            <span class="text-danger" *ngIf="f['username']?.errors?.required">Name field Required</span>
+                            <span class="text-danger" *ngIf="f['username']?.errors?.pattern">Invalid Name</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" formControlName="email"
+                            placeholder="name@example.com">
+                            <div class="small text-danger" *ngIf="f['email'].invalid && f['email'].touched">
+                                <span *ngIf="f['email']?.errors?.required">Required</span>
+                                <span *ngIf="f['email']?.errors?.email">Invalid Email </span>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Password</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="password"
+                            placeholder="name@example.com">
+                            <div class="small text-danger" *ngIf="f['password'].invalid && f['password'].touched">
+                                <span *ngIf="f['password']?.errors?.required">Required</span>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Confirm Password</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" formControlName="confirmpassword">
+                        <div class="small text-danger" *ngIf="f['confirmpassword'].invalid && f['confirmpassword'].touched">
+                            <span *ngIf="f['confirmpassword']?.errors?.required">Required</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <button type="submit">Create Account</button>
+                    </div>
+                    <div class="text-end mb-2">
+                        <a href="#"> Forgot Password</a>
+                    </div>
+                    <div class="text-center">
+                        Already have an account? <a (click)="gotoLogin()">Login</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<section *ngIf="displayloginflag">
+    <div class="container">
+        <form  [formGroup]="loginform" class="register-form" (ngSubmit)="validateloginform()">
+            <h2>Login</h2>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="" placeholder="" formControlName="email">
+                        <div class="small text-danger" *ngIf="f2['email'].invalid && f2['email'].touched">
+                            <span *ngIf="f2['email']?.errors?.required">Required</span>
+                            <span *ngIf="f2['email']?.errors?.email">Invalid Email </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Password</label>
+                        <input type="text" class="form-control" id="" placeholder="" formControlName="password">
+                       
+                        <div class="small text-danger" *ngIf="f2['password'].invalid && f2['password'].touched">
+                            <span *ngIf="f2['password']?.errors?.required">Required</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <button type="submit">Login</button>
+                    </div>
+                    <div class="text-end mb-2">
+                        <a href="#"> Forgot Password</a>
+                    </div>
+                    <div class="text-center">
+                        Don't have an account? <a (click)="gotoregister()">Register</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
