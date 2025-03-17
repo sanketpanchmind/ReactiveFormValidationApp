@@ -95,5 +95,13 @@ export class RegisterloginformComponent {
       return;
     }
     console.log("Login form validated", this.loginform.value);
+
+    const localdata = localStorage.getItem('registerformdata'); 
+
+    const logindata =  this.loginform.value;
+    
+    if(localdata){
+      const registerdata = JSON.parse(localdata);
+    }
   }
 }

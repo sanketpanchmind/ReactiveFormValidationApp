@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterloginformComponent } from './registerloginform/registerloginform.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';  // ✅ Import this
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';  // ✅ Impor
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,MatSnackBarModule, BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
