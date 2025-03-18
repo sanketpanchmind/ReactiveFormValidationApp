@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-registerloginform',
@@ -14,7 +15,7 @@ export class RegisterloginformComponent {
   displayloginflag: boolean = false;
   registerdataArray: any = [];
 
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder, public snackbar: MatSnackBar) { 
 
   }
 
@@ -74,7 +75,7 @@ export class RegisterloginformComponent {
   }
 
   validateForm(){
-    if(this.registerform.invalid){
+    if(this.registerform.invalid || (this.registerform.get('password').value !== this.registerform.get('confirmpassword').value)){
       this.registerform.markAllAsTouched();
       return;
     }
@@ -102,6 +103,24 @@ export class RegisterloginformComponent {
     
     if(localdata){
       const registerdata = JSON.parse(localdata);
+      const userfound = this.registerdataArray.find((data: any) => data.email === logindata.email && data.password === logindata.password);
+      console.log("user found", userfound);
+      
+      if(userfound){
+        this.snackbar.open('login successfull','close',{
+          duration: 2000,
+          verticalPosition: 'top',
+          horizontalPosition: 'right'
+        })
+      }
+      else{
+        this.snackbar.open('login unsuccessfull','close',{
+          duration: 2000,
+          verticalPosition: 'top',
+          horizontalPosition: 'right'
+        })
+        this.displayloginflag = false;
+      }
     }
   }
 }
