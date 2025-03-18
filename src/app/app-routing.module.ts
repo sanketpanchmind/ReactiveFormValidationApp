@@ -4,6 +4,7 @@ import { RegisterloginformComponent } from './registerloginform/registerloginfor
 
 const routes: Routes = [
   {path: 'register', component: RegisterloginformComponent},
+  { path: '', loadChildren: () => import('./layout/secure/secure.module').then(m => m.SecureModule) },
 ];
 
 @NgModule({

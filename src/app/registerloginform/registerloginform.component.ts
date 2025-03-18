@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registerloginform',
@@ -15,7 +16,7 @@ export class RegisterloginformComponent {
   displayloginflag: boolean = false;
   registerdataArray: any = [];
 
-  constructor(private fb: FormBuilder, public snackbar: MatSnackBar) { 
+  constructor(private fb: FormBuilder, public snackbar: MatSnackBar, public route: Router) { 
 
   }
 
@@ -112,6 +113,8 @@ export class RegisterloginformComponent {
           verticalPosition: 'top',
           horizontalPosition: 'right'
         })
+
+        this.route.navigate(['/dashboard']);
       }
       else{
         this.snackbar.open('login unsuccessfull','close',{
